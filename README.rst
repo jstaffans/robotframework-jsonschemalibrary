@@ -9,7 +9,7 @@ Usage
 
 The library needs access to the file system location of the schemas, in order to resolve references
 between schemas. Default is a subdirectory called `schemas` - you could make a symlink here to wherever
-the schema definition files are.
+the schema definition files are::
 
   Library  JSONSchemaLibrary  /path/to/schemas
   ...
@@ -19,8 +19,10 @@ the schema definition files are.
 Per default, only prints the validation error message when there's an error.
 Run with log level `DEBUG` in order to see more info, including a dump of the schema, in the Robot Framework logs. 
 
-Development 
+Development
 -----------
+
+::
 
   $ pybot --pythonpath . tests
 
