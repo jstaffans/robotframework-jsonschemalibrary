@@ -9,6 +9,7 @@ __version__ = '1.0'
 
 ROBOT_LIBRARY_DOC_FORMAT = 'reST'
 
+
 class JSONSchemaLibrary:
     """JSONSchemaLibrary is a library to validate JSON against JSON Schema definitions using Robot Framework.
 
@@ -22,13 +23,13 @@ class JSONSchemaLibrary:
     ROBOT_LIBRARY_SCOPE = 'Global'
 
     def __init__(self, schema_location='schemas'):
-        self.schema_location = schema_location 
+        self.schema_location = schema_location
         if not self.schema_location.endswith('/'):
             self.schema_location = '{}/'.format(self.schema_location)
 
     def validate_json(self, schema_filename, sample):
         """Validates the sample JSON against the given schema."""
-        schema = json.loads(open('{}/{}'.format(self.schema_location, schema_filename)).read())
+        schema = json.loads(open('{}/{}'.format(self.schema_location, schema_filename), encoding='UTF-8').read())
         resolver = jsonschema.RefResolver('file://{}'.format(self.schema_location), schema)
         try:
             jsonschema.validate(sample, schema, resolver=resolver)
